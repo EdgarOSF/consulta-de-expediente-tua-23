@@ -1,0 +1,129 @@
+{% extends 'webpage/base.html' %}
+
+{% block content %}
+<form method="post" class="row row-cols-lg-auto g-3 align-items-center mb-3 p-3">
+    {% csrf_token %}
+    <div class="col-12">
+        <label for="">Número de Juicio</label>
+    </div>
+    <div class="col-12">
+        <input type="text" class="form-control" name="num_juicio1">
+    </div>
+    /
+    <div class="col-12">
+        <input type="text" class="form-control" name="num_juicio2">
+    </div>
+    <div class="col-12">
+        <button class="btn btn-success form-control" type="submit">Buscar</button>
+    </div>
+</form>
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible" role="alert">{{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+{% endif %}
+<div class="card card text-dark bg-light mb-3">
+    <div class="card-header">Entrada De Expediente</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="card-text">Número Juicio: <span class="fw-bold">{{num_juicio}}</span></p>
+                    <p class="card-text">Fecha De Entrada: <span class="fw-bold">{{fecha_entrada}}</span></p>
+                    <p class="card-text">Estado: <span class="fw-bold text-uppercase">{{estado}}</span></p>
+                    <p class="card-text">Rezago Agrario: <span class="fw-bold text-uppercase">{{rezago_agrario}}</span>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="card-text">Municipio: <span class="fw-bold text-uppercase">{{municipio}}</span></p>
+                    <p class="card-text">Origen Del Expediente: <span class="fw-bold text-uppercase">{{origen_expediente}}</span></p>
+                    <p class="card-text">Poblado: <span class="fw-bold text-uppercase">{{poblado}}</span></p>
+                    <p class="card-text">Tipo De Juicio: <span class="fw-bold text-uppercase">{{tipo_juicio}}</span></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="card-header">Datos De Admisión</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="card-text">Tramite Realizado: <span class="fw-bold text-uppercase">{{tramite_realizado}}</span>
+                    </p>
+                    <p class="card-text">Fecha De Tramite: <span class="fw-bold">{{fecha_tramite}}</span></p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="card-text">Accion Ejercida: <span class="fw-bold text-uppercase">{{accion_ejercida}}</span></p>
+                    <p class="card-text">Fundamento Legal: <span class="fw-bold text-uppercase">{{fundamento_legal}}</span></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="card-header">Promovente / Actor</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="card-text">Nombre: <span class="fw-bold text-uppercase">{{nombre_promovente}}</span></p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="card-text">Otros: <span class="fw-bold text-uppercase">{{otros_promovente}}</span></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="card-header">Datos Del Demandado</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="card-text">Nombre: <span class="fw-bold text-uppercase">{{nombre_demandado}}</span>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="card-text">Otros: <span class="fw-bold text-uppercase">{{otros_demandado}}</span></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="card-header">Resoluciones</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="card-text">Fecha De Sentencia: <span class="fw-bold">{{fecha_sentencia}}</span></p>
+                    <p class="card-text">Fecha De Ejecución: <span class="fw-bold">{{fecha_ejecucion}}</span></p>
+                    <p class="card-text">Tipo De Sentencia: <span
+                            class="fw-bold text-uppercase">{{tipo_sentencia}}</span></p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="card-text">Observaciones: <span
+                            class="fw-bold text-uppercase">{{observaciones_resoluciones}}</span></p>
+                    <p class="card-text">Magistrado: <span
+                            class="fw-bold text-uppercase">{{magistrado_resolucion}}</span></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="card-header">Datos De Admisión</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="card-text">Estado Procesal: <span
+                            class="badge bg-primary text-wrap fw-bold text-uppercase">{{estado_procesal}}</span></p>
+                    <p class="card-text">Observaciones: <span
+                            class="fw-bold text-uppercase">{{observaciones_otros_datos}}</span></p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="card-text">Fecha - Conclusión: <span class="fw-bold">{{fecha_conclusion}}</span></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<button class="btn btn-lg btn-success">Generar Caratula</button>    
+
+{% endblock content %}
