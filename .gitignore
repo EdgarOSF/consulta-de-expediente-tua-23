@@ -1,3 +1,7 @@
+# Local files #
+*.pdf
+*.png
+
 # Django #
 *.log
 *.pot
